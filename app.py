@@ -5,7 +5,7 @@ import tkinter as tk # build GUI
 from PIL import Image, ImageTk # manage image
 from playsound import playsound # play audio
 
-WINDOW_TITLE = "Wardrobe App"
+WINDOW_TITLE = 'Wardrobe App'
 WINDOW_HEIGHT = 500
 WINDOW_WIDTH = 200
 IMG_WIDTH = 200
@@ -13,8 +13,8 @@ IMG_HEIGHT = 200
 BEIGE_COLOR_HEX = '#E3C396'
 SOUND_EFFECT_FILE_PATH = 'assets/Slynk.mp3'
 # store all the Tops into a file we can access
-ALL_TOPS = [str("tops/") + imagefile for imagefile in os.listdir("tops/") if not imagefile.startswith('.')]
-ALL_BOTTOMS = [str("bottoms/") + imagefile for imagefile in os.listdir("bottoms/") if not imagefile.startswith('.')]
+ALL_TOPS = [str("tops/") + file for file in os.listdir("tops/") if not file.startswith('.')]
+ALL_BOTTOMS = [str("bottoms/") + file for file in os.listdir("bottoms/") if not file.startswith('.')]
 
 class WardrobeApp:
 	def __init__(self, root):
@@ -86,7 +86,7 @@ class WardrobeApp:
 		# collect and change image into tk photo obj
 		new_image_file = Image.open(new_image)
 		image = new_image_file.resize((IMG_WIDTH, IMG_HEIGHT), Image.ANTIALIAS)
-		photo = Image.Tk.PhotoImage(image)
+		photo = ImageTk.PhotoImage(image)
 
 		#update based on provided image label
 		image_label.configure(image=photo)
