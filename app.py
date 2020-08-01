@@ -5,15 +5,16 @@ import tkinter as tk # build GUI
 from PIL import Image, ImageTk # manage image
 from playsound import playsound # play audio
 
-WINDOW_TITLE = "My Wardrobe"
-WINDOW_HEIGHT = 550
+WINDOW_TITLE = "Wardrobe App"
+WINDOW_HEIGHT = 500
 WINDOW_WIDTH = 220
-IMG_WIDTH = 250
-IMG_HEIGHT = 250
-SOUND_EFFECT_FILE_PATH = 
+IMG_WIDTH = 200
+IMG_HEIGHT = 200
+BEIGE_COLOR_HEX = '#E3C396'
+SOUND_EFFECT_FILE_PATH = 'assets/Slynk.mp3'
 # store all the Tops into a file we can access
-ALL_TOPS = [str('tops/') + imagefile for imagefile in os.listdir('tops/') if not imagefile.startswith('.')]
-ALL_BOTTOMS = [str('bottoms/') + imagefile for imagefile in os.listdir('bottoms/') if not imagefile.startswith('.')]
+ALL_TOPS = [str("tops/") + imagefile for imagefile in os.listdir("tops/") if not imagefile.startswith('.')]
+ALL_BOTTOMS = [str("bottoms/") + imagefile for imagefile in os.listdir("bottoms/") if not imagefile.startswith('.')]
 
 class WardrobeApp:
 	def __init__(self, root):
@@ -29,8 +30,9 @@ class WardrobeApp:
 
 		# pack img into top screen, then pack top screen into root
 		# create and add top & bottom image into Frame
-		self.tops_frame = tk.Frame(self.root)		
-		self.bottom_frame = tk.Frame(self.root)		
+		self.tops_frame = tk.Frame(self.root, bg = BEIGE_COLOR_HEX)		
+		self.bottom_frame = tk.Frame(self.root, bg = BEIGE_COLOR_HEX)		
+
 		self.top_image_label = self.create_photo(self.top_image_path, self.tops_frame)
 		self.bottom_image_label = self.create_photo(self.bottom_image_path, self.bottom_frame)
 		# add it to pack
