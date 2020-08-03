@@ -20,37 +20,38 @@ class WardrobeApp:
 	def __init__(self, root):
 		self.root = root
 
-		# show top/bottoms image in the window
+		# collecting all the clothes
 		self.top_images = ALL_TOPS
 		self.bottom_images = ALL_BOTTOMS
 
-		# save single top & bottom
-		self.top_image_path = self.top_images[0]
+		# first pictures for top and bottom
+		self.tops_image_path = self.top_images[0]
 		self.bottom_image_path = self.bottom_images[0]
 
-		# pack img into top screen, then pack top screen into root
-		# create and add top & bottom image into Frame
+		# creating 2 frames
 		self.tops_frame = tk.Frame(self.root, bg = BEIGE_COLOR_HEX)		
 		self.bottom_frame = tk.Frame(self.root, bg = BEIGE_COLOR_HEX)		
 
-		self.top_image_label = self.create_photo(self.top_image_path, self.tops_frame)
-		self.bottom_image_label = self.create_photo(self.bottom_image_path, self.bottom_frame)
-		# add it to pack
+		# adding top
+		self.top_image_label = self.create_photo(self.tops_image_path, self.tops_frame)
 		self.top_image_label.pack(side=tk.TOP)
-		self.bottom_image_label.pack(side=tk.TOP)
 
+		# adding bottom
+		self.bottom_image_label = self.create_photo(self.bottom_image_path, self.bottom_frame)
+		self.bottom_image_label.pack(side=tk.TOP)
+		
 		# create background
 		self.create_background()
 
 	def create_background(self):
-		# add title to window and change the size
+		# title and resize the window
 		self.root.title(WINDOW_TITLE)
 		self.root.geometry('{0}x{1}'.format(WINDOW_WIDTH, WINDOW_HEIGHT))
 
-		# add all buttons
+		# create buttons
 		self.create_buttons()
 
-		# add clothing
+		# add the initial clothes onto the screen
 		self.tops_frame.pack(fill=tk.BOTH, expand=tk.YES)
 		self.bottom_frame.pack(fill=tk.BOTH, expand=tk.YES)
 
@@ -133,13 +134,13 @@ class WardrobeApp:
 			self.bottom_image_path = next_image			
 
 		# use update function to change the image
-		self.update_image(next_image, image_label)
+		self.update_photo(next_image, image_label)
 
 	def get_next_top(self):
-		self._get_next_item(self.top_image_path, self.top_images, increment=True)
+		self._get_next_item(self.tops_image_path, self.top_images, increment=True)
 
 	def get_prev_top(self):
-		self._get_next_item(self.top_image_path, self.top_images, increment = False)
+		self._get_next_item(self.tops_image_path, self.top_images, increment = False)
 
 	def get_next_bottom(self):
 		self._get_next_item(self.bottom_image_path, self.bottom_images, increment=True)
@@ -158,7 +159,7 @@ class WardrobeApp:
 		self.update_photo(self.bottom_images[new_bottom_index], self.bottom_image_label)
 
 		# add noise
-		playsound(SOUND_EFFECT_FILE_PATH)
+		#playsound(SOUND_EFFECT_FILE_PATH)
 
 if __name__ == '__main__':
 	root = tk.Tk()
