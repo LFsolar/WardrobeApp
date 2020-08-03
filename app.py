@@ -8,10 +8,12 @@ from playsound import playsound # play audio
 WINDOW_TITLE = 'Wardrobe App'
 WINDOW_HEIGHT = 500
 WINDOW_WIDTH = 200
-IMG_WIDTH = 200
 IMG_HEIGHT = 200
+IMG_WIDTH = 200
+
 BEIGE_COLOR_HEX = '#E3C396'
 SOUND_EFFECT_FILE_PATH = 'assets/Slynk.mp3'
+
 # store all the Tops into a file we can access
 ALL_TOPS = [str("tops/") + file for file in os.listdir("tops/") if not file.startswith('.')]
 ALL_BOTTOMS = [str("bottoms/") + file for file in os.listdir("bottoms/") if not file.startswith('.')]
@@ -128,7 +130,7 @@ class WardrobeApp:
 		# reset and update the image based on next_image path
 		if current_item in self.top_images:
 			image_label = self.top_image_label
-			self.top_image_path = next_image
+			self.tops_image_path = next_image
 		else:
 			image_label = self.bottom_image_label
 			self.bottom_image_path = next_image			
